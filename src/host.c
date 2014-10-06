@@ -20,6 +20,7 @@ const hostcmdlist hcl[23]={
     [SYS_OPEN] = MKHCL(SYS_OPEN, open),
     [SYS_CLOSE] = MKHCL(SYS_CLOSE, close),
     [SYS_WRITE] = MKHCL(SYS_WRITE, write),
+    [SYS_READ] = MKHCL(SYS_READ, read),
     [SYS_SYSTEM] = MKHCL(SYS_SYSTEM, system),
 };
 
@@ -60,6 +61,10 @@ int host_close(va_list v1) {
 
 int host_write(va_list v1) {
     return host_call(SYS_WRITE, (param []){{.pdInt=va_arg(v1, int)}, {.pdPtr=va_arg(v1, void *)}, {.pdInt=va_arg(v1, int)}});
+}
+
+int host_read(va_list v1) {
+    return host_call(SYS_READ, (param []){{.pdInt=va_arg(v1, int)}, {.pdPtr=va_arg(v1, void *)}, {.pdInt=va_arg(v1, int)}});
 }
 
 int host_action(enum HOST_SYSCALL action, ...)
