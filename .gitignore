@@ -10,3 +10,4 @@ build
 output
 cscope.out
 exploit.bytes
+exploit.str
