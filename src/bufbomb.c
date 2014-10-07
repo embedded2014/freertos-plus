@@ -31,7 +31,7 @@ static char *_gets(char *str)
 	*buf = '\0';
 
 	fio_printf(1, "Your code: ");
-	while(c != '\n' && c != 0) {
+	while(c != '\n') {
 		*buf++ = c;
 		put_hex(c);
 		send_byte(' ');

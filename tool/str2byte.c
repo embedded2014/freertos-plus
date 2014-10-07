@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 		}
 		fwrite((char *)&input, sizeof(char), 1, fout);
 	}
+	fwrite("\n", sizeof(char), 1, fout);
 	fclose(fout);
 
 	return 0;
