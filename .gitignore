@@ -8,3 +8,6 @@ test-romfs.bin
 *~
 build
 output
+cscope.out
+exploit.bytes
+exploit.str

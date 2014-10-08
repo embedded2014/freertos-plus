@@ -9,6 +9,8 @@
 #include "task.h"
 #include "host.h"
 
+#include "bufbomb.h"
+
 typedef struct {
 	const char *name;
 	cmdfunc *fptr;
@@ -24,6 +26,7 @@ void help_command(int, char **);
 void host_command(int, char **);
 void mmtest_command(int, char **);
 void test_command(int, char **);
+void bufbomb_command(int, char **);
 
 #define MKCL(n, d) {.name=#n, .fptr=n ## _command, .desc=d}
 
@@ -35,7 +38,8 @@ cmdlist cl[]={
 	MKCL(host, "Run command on host"),
 	MKCL(mmtest, "heap memory allocation test"),
 	MKCL(help, "help"),
-	MKCL(test, "test new function")
+	MKCL(test, "test new function"),
+	MKCL(bufbomb, "buffer overflow attack bomb")
 };
 
 int parse_command(char *str, char *argv[]){
@@ -161,6 +165,10 @@ void test_command(int n, char *argv[]) {
     }
 
     host_action(SYS_CLOSE, handle);
+}
+
+void bufbomb_command(int n, char *argv[]) {
+	bufbomb();
 }
 
 cmdfunc *do_command(const char *cmd){
